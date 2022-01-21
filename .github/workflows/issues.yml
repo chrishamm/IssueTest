@@ -8,7 +8,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - if: !(github.event.issue.user.site_admin || contains(github.event.issue.labels.*.name, 'bug') || contains(github.event.issue.labels.*.name, 'FeatureRequest'))
+      - if: github.event.issue.user.site_admin == false && contains(github.event.issue.labels.*.name, 'bug') == false && contains(github.event.issue.labels.*.name, 'FeatureRequest') == false
         name: Close Issue
         uses: peter-evans/close-issue@v1
         with:
