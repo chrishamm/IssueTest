@@ -1,0 +1,24 @@
+name: Plugin submission
+on:
+  issues:
+    types: opened
+concurrency: 'main'
+jobs:
+  submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
+        with:
+          template-path: .github/ISSUE_TEMPLATE/submission.yml
+
+      - run: echo '${{ steps.issue-parser.outputs.jsonString }}' > submission.json
+
+      - run: cat submission.json
+      - run: cat submission.json | jq
+
+      - uses: peter-evans/close-issue@v1
+        with:
+          comment: Action complete!
