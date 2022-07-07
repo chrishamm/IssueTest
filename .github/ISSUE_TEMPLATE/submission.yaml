@@ -1,0 +1,35 @@
+name: Plugin Submission
+description: Enter GitHub values to apply for plugin submission
+labels: [submission]
+
+title: "Plugin Submission"
+
+body:
+
+- type: input
+  id: username
+  attributes:
+    label: GitHub Username
+  validations:
+    required: true
+    
+- type: input
+  id: repository
+  attributes:
+    label: GitHub Repository
+  validations:
+    required: true
+    
+- type: input
+  id: branch
+  attributes:
+    label: GitHub Branch
+  validations:
+    required: true
+    
+- type: checkboxes
+  attributes:
+    label: I acknowledge that submitting this issue does not claim a real pizza order
+    options:
+      - label: Confirm
+        required: true
